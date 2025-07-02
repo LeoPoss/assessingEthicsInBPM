@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1x8pjho" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.28.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.21.0">
+  <bpmn:process id="Process_0ll61pn" isExecutable="true" camunda:historyTimeToLive="P1D">
+    <bpmn:startEvent id="Event_04fgz8x">
+      <bpmn:outgoing>Flow_099d7s1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_099d7s1" sourceRef="Event_04fgz8x" targetRef="Activity_0jigjg0" />
+    <bpmn:endEvent id="Event_1nrax9l">
+      <bpmn:incoming>Flow_1lnpbo6</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0vltfbs" sourceRef="Activity_0jigjg0" targetRef="Activity_0ioow29" />
+    <bpmn:userTask id="Activity_0jigjg0" name="Screen Application" camunda:formKey="{&#34;perspectives&#34;: true, &#34;values&#34;: [&#34;Equality&#34;, &#34;Accountability&#34;, &#34;Privacy&#34;, &#34;Human Welfare&#34;, &#34;Justice&#34;]}" camunda:dueDate="P2D" camunda:priority="100">
+      <bpmn:documentation>This initial step involves reviewing submitted job applications to determine if the candidates meet the minimum requirements for the position. This could include checking qualifications, experience, and skills based on the job description.</bpmn:documentation>
+      <bpmn:extensionElements />
+      <bpmn:incoming>Flow_099d7s1</bpmn:incoming>
+      <bpmn:outgoing>Flow_0vltfbs</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_0u1xgtx" sourceRef="Activity_0ioow29" targetRef="Activity_0bwn0rc" />
+    <bpmn:userTask id="Activity_0ioow29" name="Conduct Interview" camunda:formKey="{&#34;perspectives&#34;: false, &#34;values&#34;: [&#34;Dignity&#34;,  &#34;Transparency&#34;]}" camunda:dueDate="P14D">
+      <bpmn:documentation>Once the shortlisted candidates are identified, interviews are conducted to assess their competencies, communication skills, and cultural fit for the organization. These interviews may be done over multiple rounds, including phone screenings, technical interviews, or in-person meetings,</bpmn:documentation>
+      <bpmn:incoming>Flow_0vltfbs</bpmn:incoming>
+      <bpmn:outgoing>Flow_0u1xgtx</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_1lnpbo6" sourceRef="Activity_0bwn0rc" targetRef="Event_1nrax9l" />
+    <bpmn:userTask id="Activity_0bwn0rc" name="Evaluate Candidate" camunda:formKey="{&#34;perspectives&#34;: true, &#34;values&#34;: [&#34;Fairness&#34;, &#34;Trust&#34;, &#34;Objectivity&#34;]}" camunda:dueDate="P1D">
+      <bpmn:documentation>After the interviews, the evaluation process begins where the interviewers compare the candidates against each other based on predefined criteria. Feedback from different interview rounds is considered to make a final decision on which candidate is the best fit for the role.</bpmn:documentation>
+      <bpmn:incoming>Flow_0u1xgtx</bpmn:incoming>
+      <bpmn:outgoing>Flow_1lnpbo6</bpmn:outgoing>
+    </bpmn:userTask>
+  </bpmn:process>
+  <bpmn:message id="Message_132b0nu" name="LeaveCompanyPremise" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_0ll61pn">
+      <bpmndi:BPMNShape id="Event_04fgz8x_di" bpmnElement="Event_04fgz8x">
+        <dc:Bounds x="152" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1nrax9l_di" bpmnElement="Event_1nrax9l">
+        <dc:Bounds x="752" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0ipuutp_di" bpmnElement="Activity_0jigjg0">
+        <dc:Bounds x="240" y="80" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_17ypope_di" bpmnElement="Activity_0ioow29">
+        <dc:Bounds x="420" y="80" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_14gk7kj_di" bpmnElement="Activity_0bwn0rc">
+        <dc:Bounds x="590" y="80" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_099d7s1_di" bpmnElement="Flow_099d7s1">
+        <di:waypoint x="188" y="120" />
+        <di:waypoint x="240" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0vltfbs_di" bpmnElement="Flow_0vltfbs">
+        <di:waypoint x="340" y="120" />
+        <di:waypoint x="420" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0u1xgtx_di" bpmnElement="Flow_0u1xgtx">
+        <di:waypoint x="520" y="120" />
+        <di:waypoint x="590" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1lnpbo6_di" bpmnElement="Flow_1lnpbo6">
+        <di:waypoint x="690" y="120" />
+        <di:waypoint x="752" y="120" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

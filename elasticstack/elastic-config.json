@@ -1,0 +1,38 @@
+{
+    "index_patterns": ["morality_*"],
+    "mappings": {
+      "runtime": {
+        "broad_based_moral_equity": {
+          "type": "float",
+          "script": {
+            "source": """
+              if (doc.containsKey('values.Just') && doc.containsKey('values.Fair') && doc.containsKey('values.Morally Right') && doc.containsKey('values.Acceptable to my Family')) {
+                  emit((doc['values.Just'].value + doc['values.Fair'].value + doc['values.Morally Right'].value + doc['values.Acceptable to my Family'].value) / 4);
+              }
+            """
+          }
+        },
+        "relativist_view": {
+          "type": "float",
+          "script": {
+            "source": """
+              if (doc.containsKey('values.Culturally Acceptable') && doc.containsKey('values.Traditionally Acceptable')) {
+                  emit((doc['values.Culturally Acceptable'].value + doc['values.Traditionally Acceptable'].value) / 2);
+              }
+            """
+          }
+        },
+        "social_contract_view": {
+          "type": "float",
+          "script": {
+            "source": """
+              if (doc.containsKey('values.Does not Violate an Unspoken Promise') && doc.containsKey('values.Does not Violate an Unwritten Contract')) {
+                  emit((doc['values.Does not Violate an Unspoken Promise'].value + doc['values.Does not Violate an Unwritten Contract'].value) / 2);
+              }
+            """
+          }
+        }
+      }
+    }
+  }
+  
